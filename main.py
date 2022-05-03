@@ -21,6 +21,6 @@ if __name__ == '__main__':
     cv2.imshow(file_name, result)
     cv2.waitKey(0)
 
-    dect = Dector('src/image/book/result/result_2.jpg', result)
+    dect = Dector('src/image/book/result/result.jpg', result)
     dect()
     cv2.destroyAllWindows()
