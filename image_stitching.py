@@ -102,7 +102,9 @@ class image_stitching:
                                          key_points_variable, key_points_fixed,
                                          effective_key_points, matched_key_points, i)
                         image_fixed = self.stitch_images(image_variable, image_fixed, Homography_matrix, i)
+                cv2.imwrite(f'{self.stitch_result_path}/result.{self.config.imwrite_format}', image_fixed)
                 return image_fixed
+
             else:
                 easygui.msgbox("没有找到可拼接的图片")
                 exit(0)
@@ -152,6 +154,7 @@ class image_stitching:
                 if single:
                     current.append(images[-1])
                 images = current
+            cv2.imwrite(f'{self.stitch_result_path}/result.{self.config.imwrite_format}', images[0])
             return images[0]
 
 
@@ -397,7 +400,7 @@ class image_stitching:
         stitching_result = self.compress_picture(stitching_result)
         self.show_picture(stitching_result, 'stitching result')
         stitching_result = stitching_result.astype(np.uint8)
-        cv2.imwrite(f'{self.stitch_result_path}/result_{i}.{self.config.imwrite_format}', stitching_result)
+        cv2.imwrite(f'{self.stitch_result_path}/temp_{i}.{self.config.imwrite_format}', stitching_result)
         return stitching_result
 
     def show_picture(self, image, title='temp'):
