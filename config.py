@@ -20,19 +20,19 @@ stitching_config = ed({
     "cut_style": 'all',
     # 图像拼接方式：
     # "stitch_style": ['successive', 'group'],
-    "stitch_style": 'group',
+    "stitch_style": 'successive',
     # 依次拼接顺序
     # "stitch_order": ['Sequence', 'middle_to_both_sides'],
-    "stitch_order": 'Sequence',
+    "stitch_order": 'middle_to_both_sides',
 
     # 是否进行柱面变换
     "cylindrical_projection_run": True,
     # 柱面变换是否进行双线性插值
     "bilinear_interpolation": False,
 
-    # 是否进行多波段融合
+    # 是否进行多频段融合
     "multi_band_blend": True,
-    # 多波段融合图像金字塔层数
+    # 多频段融合图像金字塔层数
     # "pyr_levels": 'max',
     "pyr_levels": 6,
 
@@ -53,8 +53,12 @@ stitching_config = ed({
     # trans递增矩阵形式
     # "trans_style": ['side_to_edge', 'edge_to_center'],
     "trans_style": 'edge_to_center',
-    # 生成dis矩阵时的系数，可以加强系数矩阵的非线性
-    "power": 3,
+    # 生成掩膜矩阵时的系数，可以加强系数矩阵的非线性
+    "power": 4,
+    # 是否进行掩膜衰减
+    "mask_decay": True,
+    # 掩膜衰减权重
+    "w": 0.95,
 
     # 创建画布时留下的冗余倍数
     "k": 1,
